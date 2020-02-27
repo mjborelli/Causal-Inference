@@ -1,0 +1,24 @@
+		(1)
+VARIABLES	LABELS	Model 1
+		
+white	white	0.00364*
+		(0.00201)
+male	male	0.0290***
+		(0.00159)
+aged	aged	-0.000643***
+		(5.86e-05)
+acc	acc	-0.00757***
+		(0.00197)
+bac1	bac1	-0.0241
+		(0.0846)
+DUI	DUI	-0.0542***
+		(0.00574)
+bac1_DUI	bac1_DUI	0.376***
+		(0.0864)
+Constant	Constant	0.116***
+		(0.00597)
+		
+Observations		214,558
+R-squared		0.004
+Robust standard errors in parentheses		
+*** p<0.01, ** p<0.05, * p<0.1		
