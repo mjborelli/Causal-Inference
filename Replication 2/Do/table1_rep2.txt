@@ -1,0 +1,13 @@
+	(1)
+VARIABLES	Mean
+	
+kidcount	2.491***
+	(0.00158)
+morekidsp	37.21***
+	(0.101)
+workedmp	52.21***
+	(0.105)
+	
+Observations	227,234
+Standard errors in parentheses	
+*** p<0.01, ** p<0.05, * p<0.1	

@@ -70,3 +70,48 @@ esttab using "../Tables/Table_2.rtf", rtf se nostar not label title(Table 2--DES
 esttab ,se nostar not label title(Table 2--Descriptive Statistics, Women Aged 21-35 with 2 or More Children) mtitles("All Women") width(6)
 
 * Creating Table 3
+
+// for OLS
+
+reg workedm morekids, robust
+reg weeksm morekids, robust
+reg hourswm morekids, robust
+reg incomem morekids, robust
+
+
+// for Covar adjusted IV
+reg morekids samesex, robust
+predict morekidshat, xb
+
+
+regr workedm samesex, robust
+regr weeksm samesex, robust
+regr hourswm samesex, robust
+regr incem samesex, robust
+
+// for Manual 2 stage
+reg workedm morekidshat, robust
+reg weeksm morekidshat, robust
+reg hourswm morekidshat, robust
+reg incomem morekidshat, robust
+
+//
+outreg2 using 2sls1.xls, ctitle("workedm OLS") replace
+outreg2 using 2sls1.xls, ctitle("worked 2SLS (manual)") append
+ivregress 2sls workedm (morekids = samesex), robust
+outreg2 using 2sls1.xls, ctitle("worked 2SLS") append
+
+outreg2 using 2sls1.xls, ctitle("weeksm OLS ") append
+outreg2 using 2sls1.xls, ctitle("weeksm 2SLS (manual)") append
+ivregress 2sls weeksm (morekids = samesex), robust
+outreg2 using 2sls1.xls, ctitle("weeksm 2SLS") append
+
+outreg2 using 2sls1.xls, ctitle("hoursm OLS") append
+outreg2 using 2sls1.xls, ctitle("hoursm 2SLS (manual)") append
+ivregress 2sls hourswm (morekids = samesex), robust
+outreg2 using 2sls1.xls, ctitle("hoursm 2sls") append
+
+outreg2 using 2sls1.xls, ctitle("incomem OLS") append
+outreg2 using 2sls1.xls, ctitle("incomem 2SLS (manual)") append
+ivregress 2sls incomem (morekids = samesex), robust
+outreg2 using 2sls1.xls, ctitle("incomem 2SLS") append
